@@ -1,11 +1,29 @@
+import { useEffect } from "react";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+
 function App() {
+  useEffect(() => {
+    document.title = "Faris Dev | Portfolio";
+    document.documentElement.classList.add("scroll-smooth");
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
-      <h1 className="text-4xl font-bold text-blue-600">
-        Hello, Faris!
-      </h1>
-    </div>
-  )
+    <>
+      <Header />
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
+      <Footer />
+    </>
+  );
 }
 
-export default App
+export default App;
