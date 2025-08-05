@@ -1,36 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { supabase } from "../supabaseClient";
 
 function Skills() {
+  const [skillsData, setSkillsData] = useState([]);
   const [selectedSkill, setSelectedSkill] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const skillsData = [
-    {
-      name: "HTML",
-      description:
-        "Memahami struktur dasar halaman web dan semantik HTML5.",
-    },
-    {
-      name: "CSS",
-      description:
-        "Mahir dalam menata elemen web, menggunakan Flexbox, Grid, dan membuat desain responsif.",
-    },
-    {
-      name: "JavaScript",
-      description:
-        "Mampu menulis logika interaktif, manipulasi DOM, dan bekerja dengan asynchronous programming.",
-    },
-    {
-      name: "React",
-      description:
-        "Berpengalaman dalam membangun antarmuka pengguna berbasis komponen menggunakan React Hooks, state, dan props.",
-    },
-    {
-      name: "Tailwind",
-      description:
-        "Efektif dalam membangun UI modern dengan cepat menggunakan utilitas class Tailwind CSS.",
-    },
-  ];
+  useEffect(() => {
+    async function getSkills() {
+      try {
+        setLoading(true);
+        const { data, error } = await supabase.from('skills').select('*');
+
+        if (error) {
+          throw error;
+        }
+        if (data) {
+          setSkillsData(data);
+        }
+      } catch (error) {
+        console.error('Error fetching skills:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getSkills();
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -52,13 +48,23 @@ function Skills() {
     visible: { scale: 1, opacity: 1, transition: { duration: 0.3 } },
   };
 
+  // Tampilkan pesan loading jika data sedang diambil
+  if (loading) {
+    return (
+      <section id="skills" className="py-20 bg-gray-100 text-center">
+        <h3 className="text-3xl font-semibold mb-10">Skills</h3>
+        <p>Loading skills...</p>
+      </section>
+    );
+  }
+
   return (
     <motion.section
       id="skills"
       className="py-20 bg-gray-100"
       initial="hidden"
       whileInView="visible"
-      viewport={{ amount: 0.2 }} // 'once: true' dihapus
+      viewport={{ amount: 0.2 }}
     >
       <div className="container mx-auto px-4 text-center">
         <h3 className="text-3xl font-semibold mb-10">Skills</h3>
@@ -68,7 +74,7 @@ function Skills() {
         >
           {skillsData.map((skill) => (
             <motion.div
-              key={skill.name}
+              key={skill.id}
               className={`w-20 h-20 bg-white shadow-md rounded flex items-center justify-center text-sm font-medium cursor-pointer transition-transform duration-200 hover:scale-105 ${
                 selectedSkill === skill.name ? "ring-2 ring-blue-500" : ""
               }`}
