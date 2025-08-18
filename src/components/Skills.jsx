@@ -40,7 +40,7 @@ function Skills() {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
+    visible: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 120 } },
   };
 
   const descriptionVariants = {
@@ -75,11 +75,15 @@ function Skills() {
           {skillsData.map((skill) => (
             <motion.div
               key={skill.id}
-              className={`w-20 h-20 bg-white shadow-md rounded flex items-center justify-center text-sm font-medium cursor-pointer transition-transform duration-200 hover:scale-105 ${
+              className={`w-20 h-20 bg-white shadow-md rounded flex items-center justify-center text-sm font-medium cursor-pointer transition-transform duration-200 ${
                 selectedSkill === skill.name ? "ring-2 ring-blue-500" : ""
               }`}
               variants={itemVariants}
               onClick={() => setSelectedSkill(skill.name)}
+              layout
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               {skill.name}
             </motion.div>
@@ -92,6 +96,7 @@ function Skills() {
             variants={descriptionVariants}
             initial="hidden"
             animate="visible"
+            key={selectedSkill} // Re-trigger animation on change
           >
             <h4 className="text-xl font-semibold text-blue-600 mb-2">
               {selectedSkill}
