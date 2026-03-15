@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (pointer: fine) {
+  body, a, button {
+    cursor: none !important;
+  }
+}
+
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-scroll-track, #fff);
+  border-left: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-scroll-thumb, #ddd);
+  border-radius: 0px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-scroll-thumb-hover, #bbb);
+}
+
+html[data-theme="dark"] {
+  --bg-scroll-track: #000;
+  --bg-scroll-thumb: #222;
+  --bg-scroll-thumb-hover: #444;
+}
