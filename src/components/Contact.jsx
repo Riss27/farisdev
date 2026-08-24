@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ArrowUpRight, Loader2, CheckCircle2 } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { ArrowUpRight, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { supabase } from "../supabaseClient";
 import FadeIn from "./FadeIn";
 import Magnetic from "./Magnetic";
 
@@ -9,6 +10,12 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle, loading, success, error
   const [errors, setErrors] = useState({});
+  const [errorMessage, setErrorMessage] = useState("");
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+  }, []);
 
   const validate = () => {
     let tempErrors = {};
@@ -28,24 +35,39 @@ export default function Contact() {
     if (!validate()) return;
 
     setStatus("loading");
-    
-    // Simulate API call
-    setTimeout(() => {
+    setErrorMessage("");
+
+    try {
+      const { error } = await supabase.from("messages").insert([
+        {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        },
+      ]);
+
+      if (error) throw error;
+
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
+
+      timeoutRef.current = setTimeout(() => {
         setStatus("idle");
       }, 5000);
-    }, 1500);
+    } catch {
+      setStatus("error");
+      setErrorMessage("Failed to send message. Please try again.");
+    }
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // Clear error when user starts typing
     if (errors[e.target.name]) {
       setErrors({ ...errors, [e.target.name]: "" });
+    }
+    if (status === "error") {
+      setStatus("idle");
+      setErrorMessage("");
     }
   };
 
@@ -57,9 +79,9 @@ export default function Contact() {
         <div className="lg:col-span-5 relative flex flex-col justify-between h-full">
           <div>
             <FadeIn direction="right">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter uppercase sticky top-12 z-10 hidden lg:block mb-16 text-black dark:text-white">
-                Get in Touch
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter uppercase sticky top-12 z-10 hidden md:block mb-16 text-black dark:text-white">
+              Get in Touch
+            </h2>
             </FadeIn>
             
             <div className="mb-12">
@@ -71,7 +93,7 @@ export default function Contact() {
               </FadeIn>
 
               <FadeIn delay={0.2}>
-                <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter uppercase leading-[0.9] mb-6 text-black dark:text-white lg:max-w-md">
+                <h3 className="text-4xl sm:text-5xl font-bold tracking-tighter uppercase leading-[0.9] mb-6 text-black dark:text-white lg:max-w-md">
                   Let's build<br />
                   something<br />
                   solid.
@@ -91,19 +113,19 @@ export default function Contact() {
               <span className="text-xs uppercase tracking-widest text-gray-500 font-bold">Direct Message</span>
               <a 
                 href="mailto:rohmanfaris11@gmail.com"
-                className="relative inline-flex items-center gap-4 text-lg sm:text-xl md:text-2xl font-medium tracking-tight pb-2 group"
+                className="relative inline-flex items-center gap-4 text-lg sm:text-xl md:text-2xl font-medium tracking-tight pb-2 group break-all"
               >
                 <span className="relative z-10 text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition-colors duration-500">rohmanfaris11@gmail.com</span>
                 <span className="absolute bottom-0 left-0 w-full h-[2px] bg-black dark:bg-white transform origin-right scale-x-100 group-hover:scale-x-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"></span>
                 <span className="absolute bottom-0 left-0 w-full h-full bg-black dark:bg-white transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] z-0"></span>
-                <ArrowUpRight size={24} className="text-black dark:text-white group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300 relative z-10 hidden sm:block mix-blend-difference" />
+                <ArrowUpRight size={24} className="text-black dark:text-white group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300 relative z-10 hidden sm:block mix-blend-difference" aria-hidden="true" />
               </a>
             </div>
           </FadeIn>
           
           {/* Decorative Background Text */}
           <div className="absolute bottom-0 left-0 opacity-[0.02] select-none pointer-events-none leading-none whitespace-nowrap overflow-visible origin-bottom-left lg:transform lg:-rotate-90 -z-10 text-black dark:text-white">
-            <span className="text-[7rem] sm:text-[9rem] md:text-[12rem] font-black tracking-tighter">LINK</span>
+            <span className="text-[5rem] sm:text-[7rem] md:text-[10rem] font-black tracking-tighter">LINK</span>
           </div>
         </div>
 
@@ -127,11 +149,13 @@ export default function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "name-error" : undefined}
                     className={`w-full bg-transparent border-b ${errors.name ? 'border-red-500/50' : 'border-black/20 dark:border-white/20'} py-3 px-0 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:border-black dark:focus:border-white focus:ring-0 transition-colors duration-300`}
                     placeholder="John Doe"
                     disabled={status === "loading"}
                   />
-                  {errors.name && <span className="absolute -bottom-5 left-0 text-[10px] text-red-500 uppercase tracking-wider">{errors.name}</span>}
+                  {errors.name && <span id="name-error" className="absolute -bottom-5 left-0 text-[10px] text-red-500 uppercase tracking-wider">{errors.name}</span>}
                 </div>
 
                 {/* Email Input */}
@@ -145,11 +169,13 @@ export default function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
                     className={`w-full bg-transparent border-b ${errors.email ? 'border-red-500/50' : 'border-black/20 dark:border-white/20'} py-3 px-0 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:border-black dark:focus:border-white focus:ring-0 transition-colors duration-300`}
                     placeholder="john@example.com"
                     disabled={status === "loading"}
                   />
-                  {errors.email && <span className="absolute -bottom-5 left-0 text-[10px] text-red-500 uppercase tracking-wider">{errors.email}</span>}
+                  {errors.email && <span id="email-error" className="absolute -bottom-5 left-0 text-[10px] text-red-500 uppercase tracking-wider">{errors.email}</span>}
                 </div>
               </div>
 
@@ -164,38 +190,48 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "message-error" : undefined}
                   className={`w-full bg-transparent border-b ${errors.message ? 'border-red-500/50' : 'border-black/20 dark:border-white/20'} py-3 px-0 text-black dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 focus:outline-none focus:border-black dark:focus:border-white focus:ring-0 transition-colors duration-300 resize-none`}
                   placeholder="Tell me about your project..."
                   disabled={status === "loading"}
                 />
-                {errors.message && <span className="absolute -bottom-5 left-0 text-[10px] text-red-500 uppercase tracking-wider">{errors.message}</span>}
+                {errors.message && <span id="message-error" className="absolute -bottom-5 left-0 text-[10px] text-red-500 uppercase tracking-wider">{errors.message}</span>}
               </div>
 
               {/* Submit Button & Status Indicator */}
               <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 justify-between border-t border-black/10 dark:border-white/10 pt-8">
                 
-                {status === "success" ? (
-                  <div className="flex items-center gap-3 text-green-600 dark:text-green-400 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                    <CheckCircle2 size={18} />
-                    <span className="text-xs uppercase tracking-widest font-bold">Message Transmitted</span>
-                  </div>
-                ) : (
-                  <p className="text-[10px] uppercase tracking-widest text-gray-500 sm:max-w-xs text-center sm:text-left hidden sm:block">
-                    All fields are required. Your data logic will be processed immediately.
-                  </p>
-                )}
+                <div role="status" aria-live="polite">
+                  {status === "success" ? (
+                    <div className="flex items-center gap-3 text-green-600 dark:text-green-400 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                      <CheckCircle2 size={18} aria-hidden="true" />
+                      <span className="text-xs uppercase tracking-widest font-bold">Message Transmitted</span>
+                    </div>
+                  ) : status === "error" ? (
+                    <div className="flex items-center gap-3 text-red-600 dark:text-red-400 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                      <AlertCircle size={18} aria-hidden="true" />
+                      <span className="text-xs uppercase tracking-widest font-bold">{errorMessage}</span>
+                    </div>
+                  ) : (
+                    <p className="text-[10px] uppercase tracking-widest text-gray-500 sm:max-w-xs text-center sm:text-left hidden sm:block">
+                      All fields are required. Your data logic will be processed immediately.
+                    </p>
+                  )}
+                </div>
 
                 <Magnetic strength={0.2}>
                   <button
                     type="submit"
                     disabled={status === "loading"}
+                    aria-busy={status === "loading"}
                     className="relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-xs px-8 py-4 flex items-center justify-center gap-3 group transition-transform hover:-translate-y-1 w-full sm:w-auto min-w-[180px] disabled:opacity-70 disabled:hover:translate-y-0"
                   >
                     <span className="absolute inset-0 w-full h-full bg-gray-800 dark:bg-gray-200 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-[cubic-bezier(0.76,0,0.24,1)] z-0"></span>
                     <span className="relative z-10 flex items-center gap-3">
                       {status === "loading" ? (
                         <>
-                          <Loader2 size={16} className="animate-spin" />
+                          <Loader2 size={16} className="animate-spin" aria-hidden="true" />
                           Processing
                         </>
                       ) : status === "success" ? (
@@ -203,7 +239,7 @@ export default function Contact() {
                       ) : (
                         <>
                           Send Protocol
-                          <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                          <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" aria-hidden="true" />
                         </>
                       )}
                     </span>

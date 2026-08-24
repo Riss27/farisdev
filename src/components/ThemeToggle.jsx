@@ -17,13 +17,13 @@ export default function ThemeToggle() {
     <Magnetic strength={0.4}>
       <button
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="p-2 border border-black/20 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 transition-colors focus:outline-none flex items-center justify-center group"
+        className="p-2 border border-black/20 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black dark:focus-visible:outline-white flex items-center justify-center group"
         aria-label="Toggle Theme"
       >
         {theme === "dark" ? (
-          <Sun size={20} className="text-white group-hover:scale-110 transition-transform" />
+          <Sun size={20} className="text-white group-hover:scale-110 transition-transform" aria-hidden="true" />
         ) : (
-          <Moon size={20} className="text-black group-hover:scale-110 transition-transform" />
+          <Moon size={20} className="text-black group-hover:scale-110 transition-transform" aria-hidden="true" />
         )}
       </button>
     </Magnetic>

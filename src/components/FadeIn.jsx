@@ -1,33 +1,49 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-export default function FadeIn({ 
-  children, 
-  delay = 0, 
-  className = "", 
-  direction = "up", 
-  fullWidth = false,
-  viewOnly = true // If true, animates on scroll. If false, animates on load.
-}) {
+export default function FadeIn({ children, delay = 0, className = "", direction = "up", fullWidth = false, viewOnly = true }) {
+  const prefersReduced = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const [visible, setVisible] = useState(!viewOnly || prefersReduced);
+  const ref = useRef(null);
+
   const directions = {
-    up: { y: 40, x: 0 },
-    down: { y: -40, x: 0 },
-    left: { x: 40, y: 0 },
-    right: { x: -40, y: 0 },
-    none: { x: 0, y: 0 }
+    up: "translate3d(0, 40px, 0)",
+    down: "translate3d(0, -40px, 0)",
+    left: "translate3d(40px, 0, 0)",
+    right: "translate3d(-40px, 0, 0)",
+    none: "translate3d(0, 0, 0)",
   };
 
+  useEffect(() => {
+    if (!viewOnly || !ref.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, [viewOnly]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, ...directions[direction] }}
-      animate={!viewOnly ? { opacity: 1, y: 0, x: 0 } : undefined}
-      whileInView={viewOnly ? { opacity: 1, y: 0, x: 0 } : undefined}
-      viewport={{ once: true, amount: 0.1 }} 
-      transition={{ duration: 0.8, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+    <div
+      ref={ref}
       className={`${fullWidth ? "w-full" : ""} ${className}`}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translate3d(0, 0, 0)" : directions[direction],
+        transition: `opacity 0.8s ease ${delay}s, transform 0.8s ease ${delay}s`,
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
