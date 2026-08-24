@@ -17,6 +17,9 @@ dist-ssr
 .env
 .env*.local
 
+# AI / agent config
+opencode.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
