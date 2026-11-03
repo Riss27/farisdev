@@ -1,19 +1,36 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Copy, Check } from "lucide-react";
 import FadeIn from "./FadeIn";
 import Magnetic from "./Magnetic";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle, success
+  const [copied, setCopied] = useState(false);
   const [errors, setErrors] = useState({});
   const timeoutRef = useRef(null);
+  const copyTimeoutRef = useRef(null);
 
   useEffect(() => {
-    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+    };
   }, []);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("rohmanfaris11@gmail.com");
+      setCopied(true);
+      if (copyTimeoutRef.current) clearTimeout(copyTimeoutRef.current);
+      copyTimeoutRef.current = setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Fallback if clipboard API is unavailable
+      setCopied(false);
+    }
+  };
 
   const validate = () => {
     let tempErrors = {};
@@ -103,6 +120,25 @@ export default function Contact() {
                 <span className="absolute bottom-0 left-0 w-full h-full bg-black dark:bg-white transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] z-0"></span>
                 <ArrowUpRight size={24} className="text-black dark:text-white group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300 relative z-10 hidden sm:block mix-blend-difference" aria-hidden="true" />
               </a>
+
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-black/10 dark:border-white/10 bg-black/[0.03] dark:bg-white/[0.05] hover:bg-black/10 dark:hover:bg-white/10 text-xs font-mono text-gray-600 dark:text-gray-300 transition-colors"
+                aria-label="Copy email address"
+              >
+                {copied ? (
+                  <>
+                    <Check size={13} className="text-emerald-500" aria-hidden="true" />
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Copied to clipboard</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={13} aria-hidden="true" />
+                    <span>Copy email address</span>
+                  </>
+                )}
+              </button>
             </div>
           </FadeIn>
           
