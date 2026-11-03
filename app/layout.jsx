@@ -11,6 +11,9 @@ export const metadata = {
   authors: [{ name: "Muhammad Faris Fathur Rohman", url: "https://github.com/Riss27" }],
   creator: "Muhammad Faris Fathur Rohman",
   keywords: ["Faris Dev", "Muhammad Faris Fathur Rohman", "Frontend Developer", "Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio"],
+  verification: {
+    google: "cnhyf4c2NvY6EaPTSItYODJoxyYJWQ5gvZ8ecaG39Os",
+  },
   icons: {
     icon: "/favicon.ico",
     apple: "/icon.png",
