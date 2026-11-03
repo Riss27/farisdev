@@ -8,8 +8,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="px-4 sm:px-8 md:px-12 lg:px-20 py-16 sm:py-24 border-t border-black/10 dark:border-white/10 overflow-hidden transition-colors duration-500">
-      <div className="grid lg:grid-cols-2 gap-16 lg:gap-32 mb-16 lg:mb-24">
+    <footer className="px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-20 lg:py-24 border-t border-black/10 dark:border-white/10 overflow-hidden transition-colors duration-500">
+      <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-32 mb-10 sm:mb-16 lg:mb-24">
         {/* Base of Operations */}
         <div>
           <div className="uppercase tracking-widest text-[10px] sm:text-xs text-gray-500 mb-6 sm:mb-8 font-bold">Base of Operations</div>

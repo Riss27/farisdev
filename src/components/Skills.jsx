@@ -13,16 +13,16 @@ const skillsData = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-black/10 dark:border-white/10 overflow-hidden transition-colors duration-500">
-      <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
+    <section id="skills" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-black/10 dark:border-white/10 overflow-hidden transition-colors duration-500">
+      <div className="grid lg:grid-cols-12 gap-8 lg:gap-8">
         <div className="lg:col-span-4 relative">
           <FadeIn direction="right">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter uppercase sticky top-20 md:top-12 z-10 text-black dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter uppercase lg:sticky lg:top-12 z-10 text-black dark:text-white mb-2 lg:mb-0">
               Stack
             </h2>
           </FadeIn>
           {/* Decorative Background Text */}
-          <div className="absolute top-0 right-0 opacity-[0.03] select-none pointer-events-none transform -rotate-90 origin-top-right mt-16 md:mt-32 leading-none whitespace-nowrap text-black dark:text-white">
+          <div className="hidden lg:block absolute top-0 right-0 opacity-[0.03] select-none pointer-events-none transform -rotate-90 origin-top-right mt-16 md:mt-32 leading-none whitespace-nowrap text-black dark:text-white">
             <span className="text-[4rem] sm:text-[6rem] lg:text-[9rem] font-black tracking-tighter">TECH</span>
             <br />
             <span className="text-[4rem] sm:text-[6rem] lg:text-[9rem] font-black tracking-tighter">CORE</span>
@@ -34,7 +34,7 @@ export default function Skills() {
             {skillsData.map((skill, index) => (
               <FadeIn key={skill.id || index} delay={index * 0.1}>
                 <li 
-                  className="py-4 sm:py-6 border-b border-black/10 dark:border-white/10 grid md:grid-cols-2 gap-2 sm:gap-4 group hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-200 px-4 sm:px-6 -mx-4 sm:-mx-6 cursor-default"
+                  className="py-4 sm:py-6 border-b border-black/10 dark:border-white/10 grid md:grid-cols-2 gap-2 sm:gap-4 group hover:bg-black/[0.02] dark:hover:bg-white/[0.02] transition-colors duration-200 px-2 sm:px-4 cursor-default"
                 >
                   <div className="flex flex-col">
                     <span className="text-xs uppercase tracking-widest text-gray-500 mb-1 font-bold">{skill.category}</span>

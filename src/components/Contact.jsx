@@ -55,16 +55,16 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-black/10 dark:border-white/10 overflow-hidden relative transition-colors duration-500">
-      <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 max-w-[1600px] mx-auto">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-black/10 dark:border-white/10 overflow-hidden relative transition-colors duration-500">
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 max-w-[1600px] mx-auto">
         
         {/* Left Column: Heading & Info */}
         <div className="lg:col-span-5 relative flex flex-col justify-between h-full">
           <div>
             <FadeIn direction="right">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter uppercase sticky top-12 z-10 hidden md:block mb-16 text-black dark:text-white">
-              Get in Touch
-            </h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter uppercase mb-6 sm:mb-12 text-black dark:text-white">
+                Get in Touch
+              </h2>
             </FadeIn>
             
             <div className="mb-12">
@@ -107,7 +107,7 @@ export default function Contact() {
           </FadeIn>
           
           {/* Decorative Background Text */}
-          <div className="absolute bottom-0 left-0 opacity-[0.02] select-none pointer-events-none leading-none whitespace-nowrap overflow-visible origin-bottom-left lg:transform lg:-rotate-90 -z-10 text-black dark:text-white">
+          <div className="hidden lg:block absolute bottom-0 left-0 opacity-[0.02] select-none pointer-events-none leading-none whitespace-nowrap overflow-visible origin-bottom-left lg:transform lg:-rotate-90 -z-10 text-black dark:text-white">
             <span className="text-[5rem] sm:text-[7rem] md:text-[10rem] font-black tracking-tighter">LINK</span>
           </div>
         </div>

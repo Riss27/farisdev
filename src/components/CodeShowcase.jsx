@@ -31,23 +31,23 @@ export const useResponsive = (minWidth: number): boolean => {
 
 export default function CodeShowcase() {
   return (
-    <section id="code" className="py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-black/10 dark:border-white/10 overflow-hidden transition-colors duration-500">
+    <section id="code" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-black/10 dark:border-white/10 overflow-hidden transition-colors duration-500">
       <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
-        <div className="lg:col-span-12 mb-4 sm:mb-8">
+        <div className="lg:col-span-12 mb-4 sm:mb-8 min-w-0">
           <FadeIn>
             <div className="flex items-center gap-4 mb-4">
               <div className="p-2 bg-black dark:bg-white text-white dark:text-black">
                 <Code size={20} aria-hidden="true" />
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tighter uppercase text-black dark:text-white">Engineering Spotlight</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tighter uppercase text-black dark:text-white">Engineering Spotlight</h2>
             </div>
-            <p className="text-gray-500 dark:text-gray-400 max-w-2xl font-light">
+            <p className="text-gray-500 dark:text-gray-400 max-w-2xl font-light text-sm sm:text-base">
               Real-world patterns applied in production projects, emphasizing clean abstractions, strict types, and lightweight client state.
             </p>
           </FadeIn>
         </div>
 
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-7 min-w-0">
           <FadeIn delay={0.2}>
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-zinc-800 dark:to-zinc-900 opacity-20 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 blur"></div>
@@ -55,12 +55,12 @@ export default function CodeShowcase() {
                 <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 border-b border-white/10 bg-[#161b22]">
                   <div className="flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                    <span className="text-xs uppercase tracking-widest text-gray-400 font-mono">useResponsive.ts</span>
+                    <span className="text-[11px] sm:text-xs uppercase tracking-widest text-gray-400 font-mono">useResponsive.ts</span>
                   </div>
                   <Terminal size={14} className="text-gray-400" aria-hidden="true" />
                 </div>
                 <div className="p-3 sm:p-6 overflow-x-auto max-h-[350px] sm:max-h-[500px]">
-                  <pre className="text-[11px] sm:text-xs font-mono text-gray-300 leading-normal whitespace-pre">
+                  <pre className="text-[10px] sm:text-xs font-mono text-gray-300 leading-normal whitespace-pre">
                     <code>{snippet}</code>
                   </pre>
                 </div>
@@ -69,7 +69,7 @@ export default function CodeShowcase() {
           </FadeIn>
         </div>
 
-        <div className="lg:col-span-5 flex flex-col justify-center">
+        <div className="lg:col-span-5 flex flex-col justify-center min-w-0">
           <FadeIn delay={0.4} direction="left">
             <div className="space-y-6 sm:space-y-8">
               <div className="flex gap-4 items-start group">

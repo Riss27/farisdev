@@ -34,13 +34,13 @@ const highlights = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-black/10 dark:border-white/10 overflow-hidden transition-colors duration-500">
-      <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-black/10 dark:border-white/10 overflow-hidden transition-colors duration-500">
+      <div className="grid lg:grid-cols-12 gap-8 lg:gap-8">
         <div className="lg:col-span-4 relative">
           <FadeIn direction="right">
-            <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.03em] uppercase sticky top-20 md:top-12 z-10 text-black dark:text-white">About</h2>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.03em] uppercase lg:sticky lg:top-12 z-10 text-black dark:text-white mb-2 lg:mb-0">About</h2>
           </FadeIn>
-          <div className="absolute top-0 right-0 opacity-[0.03] select-none pointer-events-none transform -rotate-90 origin-top-right mt-16 md:mt-24 leading-none whitespace-nowrap text-black dark:text-white">
+          <div className="hidden lg:block absolute top-0 right-0 opacity-[0.03] select-none pointer-events-none transform -rotate-90 origin-top-right mt-16 md:mt-24 leading-none whitespace-nowrap text-black dark:text-white">
             <span className="text-[4.5rem] sm:text-[6rem] lg:text-[8.5rem] font-black tracking-[-0.04em]">OVER</span>
             <br />
             <span className="text-[4.5rem] sm:text-[6rem] lg:text-[8.5rem] font-black tracking-[-0.04em]">VIEW</span>
@@ -49,7 +49,7 @@ export default function About() {
 
         <div className="lg:col-span-8">
           <FadeIn delay={0.2}>
-            <div className="text-xl md:text-3xl leading-8 md:leading-10 font-medium text-black dark:text-white max-w-3xl mb-14 tracking-[-0.02em]">
+            <div className="text-lg sm:text-2xl md:text-3xl leading-relaxed sm:leading-10 font-medium text-black dark:text-white max-w-3xl mb-8 sm:mb-14 tracking-[-0.02em]">
               I’m <span className="font-semibold">Muhammad Faris Fathur Rohman</span>, a web developer crafting digital products with precision and purpose. Based in Bandung, Indonesia, I bridge thoughtful UI design with robust, scalable engineering.
             </div>
           </FadeIn>
