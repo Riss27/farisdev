@@ -47,34 +47,33 @@ export default function Footer() {
         <div className="lg:col-span-2 pt-16 border-t border-black/5 dark:border-white/5 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8">
           <div className="flex flex-col gap-4">
             <div className="uppercase tracking-widest text-[10px] text-gray-500 font-bold">Stack Core</div>
-            <div className="flex flex-wrap gap-x-8 gap-y-2 opacity-50 font-mono text-[10px] uppercase">
-              <span>React 19.1</span>
-              <span>Next.js 16.1</span>
-              <span>Tailwind 4.1</span>
-              <span>Supabase JS</span>
+            <div className="flex flex-wrap gap-x-8 gap-y-2 text-gray-500 dark:text-gray-400 font-mono text-xs uppercase">
+              <span>Next.js 16</span>
+              <span>React 19</span>
+              <span>Tailwind CSS 4</span>
+              <span>Local-First</span>
             </div>
           </div>
-          <div className="flex flex-col items-end">
+          <div className="flex flex-col items-start sm:items-end">
             <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 mb-2 font-bold">Architecture</span>
-            <span className="text-xl font-bold uppercase tracking-tighter text-black dark:text-white">Clean Structure</span>
+            <span className="text-xl font-bold uppercase tracking-tighter text-black dark:text-white">Static & Accessible</span>
           </div>
         </div>
       </div>
 
-      <div className="pt-8 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold gap-8">
+      <div className="pt-8 border-t border-black/10 dark:border-white/10 flex flex-col md:flex-row justify-between items-start md:items-center text-xs uppercase tracking-[0.2em] text-gray-400 font-medium gap-8">
         <div className="flex items-center gap-6">
           <span className="text-black dark:text-white font-black tracking-tighter text-lg">FARISDEV.</span>
-          <span className="hidden sm:inline">/</span>
-          <span>© {new Date().getFullYear()} INDEX_REBOOT</span>
+          <span className="hidden sm:inline text-gray-300 dark:text-gray-700">/</span>
+          <span>© {new Date().getFullYear()} Faris Fathur Rohman</span>
         </div>
         
         <div className="text-left md:text-right flex items-center gap-8">
-          <div className="flex flex-col">
-             <span className="text-black dark:text-white">OPTIMIZED_FOR</span>
-             <span className="opacity-60">RECRUITER_SCREENING</span>
+          <div className="flex flex-col text-[11px] normal-case tracking-normal text-gray-500">
+             <span>Crafted with Next.js & Tailwind</span>
           </div>
           <div className="hidden md:block w-12 h-px bg-black/20 dark:bg-white/20"></div>
-          <a href="#hero" className="hover:text-black dark:hover:text-white transition-colors">TOP_LEVEL_INDEX</a>
+          <a href="#hero" className="hover:text-black dark:hover:text-white transition-colors uppercase font-mono text-xs">Back to top ↑</a>
         </div>
       </div>
     </footer>

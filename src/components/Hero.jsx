@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Download } from "lucide-react";
 import FadeIn from "./FadeIn";
 import Magnetic from "./Magnetic";
 
@@ -22,7 +22,7 @@ export default function Hero() {
 
           <FadeIn delay={0.3} viewOnly={false}>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 dark:text-gray-200 max-w-2xl leading-7 sm:leading-8 mb-10 sm:mb-12 font-medium">
-              I craft high-performance web experiences and thoughtful interfaces that turn complex ideas into calm, intuitive products.
+              Frontend & Web Developer crafting performant, accessible digital products with modern architectures, clean code, and thoughtful interactions.
             </p>
           </FadeIn>
 
@@ -33,6 +33,15 @@ export default function Hero() {
                   <span className="relative z-10 flex items-center gap-2">
                     Recent Work
                     <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                </a>
+              </Magnetic>
+
+              <Magnetic strength={0.25}>
+                <a href="/cv-faris.pdf" download="CV_Muhammad_Faris_Fathur_Rohman.pdf" className="rounded-full px-6 py-3.5 bg-black/[0.04] dark:bg-white/[0.08] hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black text-black dark:text-white font-semibold uppercase tracking-[0.2em] text-[11px] transition-all duration-300 flex items-center gap-3 group w-full sm:w-auto justify-center border border-black/10 dark:border-white/10">
+                  <span className="relative z-10 flex items-center gap-2">
+                    Download CV
+                    <Download size={14} className="transition-transform duration-300 group-hover:translate-y-0.5" aria-hidden="true" />
                   </span>
                 </a>
               </Magnetic>
@@ -52,31 +61,31 @@ export default function Hero() {
         <FadeIn delay={0.4} direction="left" className="w-full xl:w-[360px] shrink-0" viewOnly={false}>
           <div className="w-full h-full aspect-[4/3] sm:aspect-video xl:aspect-[4/5] rounded-[28px] border border-black/10 dark:border-white/10 bg-white/70 dark:bg-black/40 backdrop-blur-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.08)] transition-colors duration-500">
             <div className="h-[32%] p-6 lg:p-8 border-b border-black/10 dark:border-white/10 flex flex-col justify-end bg-gradient-to-br from-black/[0.03] to-transparent dark:from-white/[0.05]">
-              <span className="text-[10px] uppercase tracking-[0.24em] text-gray-500 mb-2 block font-semibold">Specialization</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-2 block font-semibold">Specialization</span>
               <span className="text-xl lg:text-2xl font-semibold uppercase tracking-[-0.02em] text-black dark:text-white leading-none">
-                Beyond<br />Interfaces
+                Web Apps &<br />Interfaces
               </span>
             </div>
 
             <div className="h-[24%] p-6 lg:p-8 border-b border-black/10 dark:border-white/10 flex flex-col justify-end">
-              <span className="text-[10px] uppercase tracking-[0.24em] text-gray-500 mb-2 block font-semibold">Industry Focus</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-2 block font-semibold">Domain Focus</span>
               <span className="text-base lg:text-lg font-semibold uppercase tracking-[-0.01em] leading-none text-black dark:text-white">
-                SaaS, Fintech<br />& E-Commerce
+                SaaS, Dashboards<br />& Platforms
               </span>
             </div>
 
             <div className="h-[24%] p-6 lg:p-8 border-b border-black/10 dark:border-white/10 flex flex-col justify-end">
-              <span className="text-[10px] uppercase tracking-[0.24em] text-gray-500 mb-2 block font-semibold">Metrics of Success</span>
-              <ul className="text-black dark:text-white text-[10px] font-semibold leading-relaxed tracking-[0.2em] uppercase">
-                <li>• Performant Arch</li>
-                <li>• Type-Safe Dev</li>
-                <li>• UX Optimized</li>
+              <span className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-2 block font-semibold">Technical Strengths</span>
+              <ul className="text-black dark:text-white text-xs font-semibold leading-relaxed tracking-[0.16em] uppercase">
+                <li>• Next.js App Router</li>
+                <li>• TypeScript Strict</li>
+                <li>• Accessible UI (a11y)</li>
               </ul>
             </div>
 
             <div className="h-[20%] bg-black dark:bg-white text-white dark:text-black px-6 lg:px-8 flex items-center justify-between">
               <div className="flex flex-col">
-                <span className="text-[9px] font-semibold uppercase tracking-[0.24em] opacity-70">Availability</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] opacity-75">Availability</span>
                 <span className="text-xs font-semibold uppercase tracking-[0.2em] mt-1">Open for roles</span>
               </div>
               <div className="relative">

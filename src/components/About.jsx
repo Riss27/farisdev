@@ -1,22 +1,34 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, GraduationCap, Briefcase, Code2, Sparkles } from "lucide-react";
 import FadeIn from "./FadeIn";
 
-const qualities = [
+const highlights = [
   {
-    title: "Structure First",
-    desc: "Writing code that prioritizes legibility, maintainability, and logical architecture over fleeting trends.",
+    category: "Education",
+    icon: GraduationCap,
+    title: "Universitas Pasundan",
+    period: "2022 — Present",
+    desc: "Informatics Engineering undergraduate focusing on software engineering, web architectures, and mobile systems development.",
   },
   {
-    title: "Problem Solver",
-    desc: "Transforming complex requirements into solid, performing systems with exactness.",
+    category: "Experience",
+    icon: Briefcase,
+    title: "PT Saptaloka Digital",
+    period: "Internship 2025",
+    desc: "Fullstack Engineering Intern developing production Express.js REST APIs, relational MySQL schemas with Sequelize, and React frontends.",
   },
   {
-    title: "Adaptability",
-    desc: "Continuously refining methods and adopting optimal tools for robust solutions.",
+    category: "Key Projects",
+    icon: Code2,
+    title: "Cosmic Bunny & MangTodo",
+    period: "Campus Projects",
+    desc: "Led frontend development for Cosmic Bunny (Next.js, TypeScript, Zustand) and MangTodo Android client (Kotlin, MVVM, Room).",
   },
   {
-    title: "Detail Driven",
-    desc: "Executing developments with a rigorous eye for alignment, performance, and accessibility.",
+    category: "Engineering Focus",
+    icon: Sparkles,
+    title: "Performance & a11y",
+    period: "Core Philosophy",
+    desc: "Dedicated to accessible (WCAG compliant), type-safe, and zero-bloat web interfaces with measurable performance.",
   },
 ];
 
@@ -38,27 +50,32 @@ export default function About() {
         <div className="lg:col-span-8">
           <FadeIn delay={0.2}>
             <div className="text-xl md:text-3xl leading-8 md:leading-10 font-medium text-black dark:text-white max-w-3xl mb-14 tracking-[-0.02em]">
-              I’m <span className="font-semibold">Muhammad Faris Fathur Rohman</span>, a web developer crafting digital products with precision and purpose. Currently pursuing my degree at{" "}
-              <span className="font-semibold border-b border-emerald-500/50">Universitas Pasundan</span>, I believe great software is defined by <span className="text-gray-500 dark:text-gray-400">clarity</span>, <span className="text-gray-500 dark:text-gray-400">performance</span>,
-              and <span className="text-gray-500 dark:text-gray-400">attention to detail</span>.
+              I’m <span className="font-semibold">Muhammad Faris Fathur Rohman</span>, a web developer crafting digital products with precision and purpose. Based in Bandung, Indonesia, I bridge thoughtful UI design with robust, scalable engineering.
             </div>
           </FadeIn>
 
-          <div className="grid sm:grid-cols-2 gap-3">
-            {qualities.map((item, idx) => (
-              <FadeIn key={idx} delay={0.2 + idx * 0.1} className="h-full">
-                <div className="h-full group rounded-[24px] border border-black/10 dark:border-white/10 bg-white/80 dark:bg-black/50 p-6 sm:p-8 xl:p-10 flex flex-col justify-between hover:bg-white dark:hover:bg-black transition-colors duration-500 overflow-hidden relative shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-                  <div className="absolute top-0 right-0 w-16 h-16 bg-black/[0.03] dark:bg-white/[0.05] translate-x-full -translate-y-full group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] flex items-center justify-center rounded-bl-[24px]">
-                    <ArrowUpRight size={20} className="text-black dark:text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100" aria-hidden="true" />
+          <div className="grid sm:grid-cols-2 gap-4">
+            {highlights.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <FadeIn key={idx} delay={0.2 + idx * 0.1} className="h-full">
+                  <div className="h-full group rounded-[24px] border border-black/10 dark:border-white/10 bg-white/80 dark:bg-black/50 p-6 sm:p-8 flex flex-col justify-between hover:bg-white dark:hover:bg-black transition-colors duration-500 overflow-hidden relative shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gray-500 font-semibold">
+                        <Icon size={16} className="text-emerald-500" aria-hidden="true" />
+                        <span>{item.category}</span>
+                      </div>
+                      <span className="text-xs uppercase tracking-widest text-gray-400 font-mono">{item.period}</span>
+                    </div>
+
+                    <div className="relative z-10">
+                      <h3 className="text-lg sm:text-xl font-semibold tracking-[-0.02em] mb-2 text-black dark:text-white">{item.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-light text-sm group-hover:text-black dark:group-hover:text-gray-300 transition-colors duration-300">{item.desc}</p>
+                    </div>
                   </div>
-                  <span className="text-[10px] uppercase tracking-[0.24em] text-gray-500 mb-6 sm:mb-8 block group-hover:text-black dark:group-hover:text-white transition-colors duration-300">0{idx + 1}</span>
-                  <div className="relative z-10">
-                    <h3 className="text-lg sm:text-xl font-semibold uppercase tracking-[-0.02em] mb-3 sm:mb-4 text-black dark:text-white">{item.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-light text-sm sm:text-base group-hover:text-black dark:group-hover:text-gray-300 transition-colors duration-300">{item.desc}</p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </div>

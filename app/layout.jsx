@@ -5,8 +5,36 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Faris Dev | Portfolio",
-  description: "Portfolio Muhammad Faris Fathur Rohman - Web Developer",
+  metadataBase: new URL("https://farisdev.vercel.app"),
+  title: "Faris Dev | Muhammad Faris Fathur Rohman - Web Developer",
+  description: "Portfolio of Muhammad Faris Fathur Rohman — Frontend & Web Developer specializing in Next.js, React, TypeScript, and modern web architectures.",
+  authors: [{ name: "Muhammad Faris Fathur Rohman", url: "https://github.com/Riss27" }],
+  creator: "Muhammad Faris Fathur Rohman",
+  keywords: ["Faris Dev", "Muhammad Faris Fathur Rohman", "Frontend Developer", "Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio"],
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/icon.png",
+  },
+  openGraph: {
+    title: "Faris Dev | Muhammad Faris Fathur Rohman",
+    description: "Frontend & Web Developer crafting performant, accessible digital products with modern architectures.",
+    type: "website",
+    locale: "id_ID",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Muhammad Faris Fathur Rohman - Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Faris Dev | Muhammad Faris Fathur Rohman",
+    description: "Frontend & Web Developer crafting performant, accessible digital products.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }) {

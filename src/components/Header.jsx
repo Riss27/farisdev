@@ -103,8 +103,8 @@ export default function Header() {
         <div>
           <div className="flex flex-col gap-10 mb-20">
             <div className="flex items-center justify-between">
-              <a href="#hero" className="text-2xl font-black tracking-tighter uppercase text-black dark:text-white group">
-                <span className="block italic opacity-40 text-[10px] tracking-[0.3em] font-normal mb-1 group-hover:opacity-100 transition-opacity">BUILD_VER_2.1</span>
+              <a href="#hero" className="text-2xl font-black tracking-tighter uppercase text-black dark:text-white group focus-visible:outline-2 focus-visible:outline-black dark:focus-visible:outline-white">
+                <span className="block text-xs uppercase tracking-widest text-gray-500 font-mono mb-1">Portfolio</span>
                 FarisDev.
               </a>
               <div className="hidden md:block">
@@ -113,7 +113,7 @@ export default function Header() {
             </div>
 
             <div className="bg-black/5 dark:bg-white/5 border-l-2 border-black dark:border-white p-4 font-mono">
-              <span className="text-[10px] uppercase text-gray-500 block mb-1">Local_Time [GMT+7]</span>
+              <span className="text-xs uppercase text-gray-500 dark:text-gray-400 block mb-1">Local_Time [GMT+7]</span>
               <span className="text-lg font-bold text-black dark:text-white tabular-nums">{time || "00:00:00"}</span>
             </div>
           </div>
@@ -145,13 +145,13 @@ export default function Header() {
 
         <div className="flex flex-col gap-8">
           <div className="flex gap-4">
-            <a href="https://github.com/riss27" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-3 border border-black/10 dark:border-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+            <a href="https://github.com/riss27" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-3 border border-black/10 dark:border-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors focus-visible:outline-2 focus-visible:outline-black dark:focus-visible:outline-white">
               <Github size={18} aria-hidden="true" />
             </a>
-            <a href="https://www.linkedin.com/in/faris-rohman-54873a1a6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-3 border border-black/10 dark:border-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+            <a href="https://www.linkedin.com/in/faris-rohman-54873a1a6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-3 border border-black/10 dark:border-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors focus-visible:outline-2 focus-visible:outline-black dark:focus-visible:outline-white">
               <Linkedin size={18} aria-hidden="true" />
             </a>
-            <a href="mailto:rohmanfaris11@gmail.com" aria-label="Email" className="p-3 border border-black/10 dark:border-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+            <a href="mailto:rohmanfaris11@gmail.com" aria-label="Email" className="p-3 border border-black/10 dark:border-white/10 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors focus-visible:outline-2 focus-visible:outline-black dark:focus-visible:outline-white">
               <Mail size={18} aria-hidden="true" />
             </a>
           </div>

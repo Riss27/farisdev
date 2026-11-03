@@ -1,66 +1,61 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { supabase } from "../supabaseClient";
 import FadeIn from "./FadeIn";
 
-const fallbackProjects = [
+const projects = [
   {
     id: 1,
-    name: "Lumina POS System",
-    role: "Lead Frontend Developer",
-    description: "Cloud-based point of sale for small businesses that synchronizes data in real-time across multiple devices and locations.",
-    impact: "Reduced data synchronization latency by 45% using optimized real-time listeners and caching strategies.",
-    image_url: "https://images.unsplash.com/photo-1556742049-04ff4f476c28?auto=format&fit=crop&q=80&w=800",
-    live_demo_url: "#",
-    github_url: "#",
-    tags: ["React", "Supabase", "TanStack Query", "Tailwind CSS"],
+    name: "Cosmic Bunny",
+    role: "Frontend Developer (Campus Project)",
+    type: "Web Application",
+    description: "Interactive gaming e-commerce platform featuring cosmic visual aesthetics, dynamic client interactions with Framer Motion, and global client-state management via Zustand.",
+    impact: "Delivered responsive visual components, game catalog browsing, and seamless client-side state handling with strict schema validation.",
+    image_url: "/images/projects/cosmic-bunny.png",
+    live_demo_url: "https://cosmic-bunny.rezaa.me",
+    github_url: "https://github.com/Riss27/cosmic-bunny",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "Motion"],
   },
   {
     id: 2,
-    name: "EduFlow LMS",
-    role: "Fullstack Developer",
-    description: "Comprehensive learning management system designed for tutoring centers with interactive lesson builders and student tracking.",
-    impact: "Scaled to support 500+ active students with a 99.9% uptime record during peak examination seasons.",
-    image_url: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=800",
+    name: "FE MangTodo",
+    role: "Frontend Developer (Campus Project)",
+    type: "Android Application",
+    description: "Mobile task and workflow management client developed in Android Kotlin, prioritizing clean MVVM architecture, offline storage with Room, and structured API consumption.",
+    impact: "Implemented responsive mobile screen flows, task progress tracking, and category filtering.",
+    image_url: "/images/projects/mangtodo.png",
     live_demo_url: "#",
-    github_url: "#",
-    tags: ["Next.js", "PostgreSQL", "Framer Motion", "AWS"],
+    github_url: "https://github.com/Riss27/FE-MangTodo",
+    tags: ["Android", "Kotlin", "Gradle", "MVVM", "Room", "Retrofit"],
   },
   {
     id: 3,
-    name: "NexHealth Dashboard",
-    role: "UI/UX & Frontend Engineer",
-    description: "Analytical dashboard for healthcare providers to visualize patient demographics and treatment outcomes efficiently.",
-    impact: "Shortened doctor-decision time by 30% through intuitive data visualization and streamlined navigation.",
-    image_url: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=800",
+    name: "Internship Saptaloka",
+    role: "Fullstack Engineering Intern",
+    type: "Enterprise Internship",
+    description: "Enterprise modules engineered during internship at PT Saptaloka Digital, architected with Express.js REST APIs, relational MySQL schemas via Sequelize, and React Tailwind frontends.",
+    impact: "Authored production database migrations, modular API routing, and integrated authenticated dashboard views.",
+    image_url: "/images/projects/saptaloka.png",
     live_demo_url: "#",
-    github_url: "#",
-    tags: ["TypeScript", "D3.js", "React", "Node.js"],
+    github_url: "https://github.com/Riss27/internship-learning",
+    tags: ["Express.js", "MySQL", "Sequelize", "React", "Tailwind CSS"],
+  },
+  {
+    id: 4,
+    name: "Neon Pong Web Game",
+    role: "Frontend Game Developer",
+    type: "Interactive Canvas Game",
+    description: "Retro Pong arcade game featuring glowing canvas neon aesthetics, smart AI opponent logic, adaptive keyboard/touch controls, and zero external game engine dependencies.",
+    impact: "Delivers smooth 60fps physics rendering purely through vanilla HTML5 Canvas and modern ESNext.",
+    image_url: "/images/projects/neon-pong.png",
+    live_demo_url: "https://riss27.github.io/neon-pong/",
+    github_url: "https://github.com/Riss27/neon-pong",
+    tags: ["JavaScript", "HTML5 Canvas", "Audio API", "Game Dev"],
   },
 ];
 
 export default function Projects() {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function getProjects() {
-      try {
-        const { data, error } = await supabase.from("projects").select("*");
-        if (error) throw error;
-        setProjects(data?.length > 0 ? data : fallbackProjects);
-      } catch {
-        setProjects(fallbackProjects);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getProjects();
-  }, []);
-
   return (
     <section id="projects" className="py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-black/10 dark:border-white/10 transition-colors duration-500">
       <div className="flex flex-col gap-12 sm:gap-16">
@@ -77,7 +72,7 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-          {(loading ? fallbackProjects : projects).map((project, idx) => (
+          {projects.map((project, idx) => (
             <FadeIn key={project.id || idx} delay={idx * 0.15} className="h-full">
               <div className="h-full rounded-[28px] border border-black/10 dark:border-white/10 bg-white/80 dark:bg-black/50 flex flex-col group overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.04)] backdrop-blur-xl">
                 <div className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-zinc-900">
@@ -86,20 +81,23 @@ export default function Projects() {
 
                 <div className="p-6 sm:p-8 flex flex-col flex-1">
                   <div className="flex flex-col mb-4">
-                    <span className="text-[9px] uppercase tracking-[0.24em] text-gray-400 mb-1">{project.role}</span>
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span className="text-xs uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 font-medium">{project.role}</span>
+                      <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono font-medium">{project.type}</span>
+                    </div>
                     <h3 className="text-xl sm:text-2xl font-semibold tracking-[-0.02em] uppercase leading-none text-black dark:text-white">{project.name}</h3>
                   </div>
 
                   <p className="text-gray-600 dark:text-gray-400 font-light mb-6 text-sm leading-7">{project.description}</p>
 
                   <div className="rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/5 dark:border-white/10 p-4 mb-8">
-                    <span className="text-[9px] uppercase tracking-[0.24em] text-gray-400 block mb-1 font-semibold">Key Metric</span>
+                    <span className="text-xs uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400 block mb-1 font-semibold">Key Metric</span>
                     <p className="text-sm font-medium text-black dark:text-white">“{project.impact}”</p>
                   </div>
 
                   <div className="flex flex-wrap gap-2 mb-10">
                     {project.tags?.map((tag) => (
-                      <span key={tag} className="px-2.5 py-1.5 text-[8px] rounded-full bg-black/[0.04] dark:bg-white/[0.06] uppercase tracking-[0.24em] text-gray-500">
+                      <span key={tag} className="px-2.5 py-1.5 text-xs rounded-full bg-black/[0.04] dark:bg-white/[0.06] uppercase tracking-[0.2em] text-gray-500">
                         {tag}
                       </span>
                     ))}

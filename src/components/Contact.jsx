@@ -1,16 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ArrowUpRight, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
-import { supabase } from "../supabaseClient";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import FadeIn from "./FadeIn";
 import Magnetic from "./Magnetic";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle, loading, success, error
+  const [status, setStatus] = useState("idle"); // idle, success
   const [errors, setErrors] = useState({});
-  const [errorMessage, setErrorMessage] = useState("");
   const timeoutRef = useRef(null);
 
   useEffect(() => {
@@ -30,44 +28,29 @@ export default function Contact() {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
 
-    setStatus("loading");
-    setErrorMessage("");
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name.trim()}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name.trim()}\nEmail: ${formData.email.trim()}\n\nMessage:\n${formData.message.trim()}`
+    );
 
-    try {
-      const { error } = await supabase.from("messages").insert([
-        {
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          message: formData.message.trim(),
-        },
-      ]);
+    window.open(`mailto:rohmanfaris11@gmail.com?subject=${subject}&body=${body}`, "_blank");
 
-      if (error) throw error;
+    setStatus("success");
+    setFormData({ name: "", email: "", message: "" });
 
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-
-      timeoutRef.current = setTimeout(() => {
-        setStatus("idle");
-      }, 5000);
-    } catch {
-      setStatus("error");
-      setErrorMessage("Failed to send message. Please try again.");
-    }
+    timeoutRef.current = setTimeout(() => {
+      setStatus("idle");
+    }, 6000);
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     if (errors[e.target.name]) {
       setErrors({ ...errors, [e.target.name]: "" });
-    }
-    if (status === "error") {
-      setStatus("idle");
-      setErrorMessage("");
     }
   };
 
@@ -206,16 +189,11 @@ export default function Contact() {
                   {status === "success" ? (
                     <div className="flex items-center gap-3 text-green-600 dark:text-green-400 animate-in fade-in slide-in-from-bottom-2 duration-500">
                       <CheckCircle2 size={18} aria-hidden="true" />
-                      <span className="text-xs uppercase tracking-widest font-bold">Message Transmitted</span>
-                    </div>
-                  ) : status === "error" ? (
-                    <div className="flex items-center gap-3 text-red-600 dark:text-red-400 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                      <AlertCircle size={18} aria-hidden="true" />
-                      <span className="text-xs uppercase tracking-widest font-bold">{errorMessage}</span>
+                      <span className="text-xs uppercase tracking-widest font-bold">Mail App Triggered</span>
                     </div>
                   ) : (
-                    <p className="text-[10px] uppercase tracking-widest text-gray-500 sm:max-w-xs text-center sm:text-left hidden sm:block">
-                      All fields are required. Your data logic will be processed immediately.
+                    <p className="text-xs uppercase tracking-widest text-gray-500 sm:max-w-xs text-center sm:text-left hidden sm:block">
+                      Fills will launch your mail client directly.
                     </p>
                   )}
                 </div>
@@ -223,22 +201,15 @@ export default function Contact() {
                 <Magnetic strength={0.2}>
                   <button
                     type="submit"
-                    disabled={status === "loading"}
-                    aria-busy={status === "loading"}
-                    className="relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-xs px-8 py-4 flex items-center justify-center gap-3 group transition-transform hover:-translate-y-1 w-full sm:w-auto min-w-[180px] disabled:opacity-70 disabled:hover:translate-y-0"
+                    className="relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-xs px-8 py-4 flex items-center justify-center gap-3 group transition-transform hover:-translate-y-1 w-full sm:w-auto min-w-[180px]"
                   >
                     <span className="absolute inset-0 w-full h-full bg-gray-800 dark:bg-gray-200 -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-[cubic-bezier(0.76,0,0.24,1)] z-0"></span>
                     <span className="relative z-10 flex items-center gap-3">
-                      {status === "loading" ? (
-                        <>
-                          <Loader2 size={16} className="animate-spin" aria-hidden="true" />
-                          Processing
-                        </>
-                      ) : status === "success" ? (
-                        <>Sent</>
+                      {status === "success" ? (
+                        <>Opened Mailer</>
                       ) : (
                         <>
-                          Send Protocol
+                          Send Message
                           <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" aria-hidden="true" />
                         </>
                       )}
