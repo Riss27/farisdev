@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  metadataBase: new URL("https://farisdev.vercel.app"),
+  metadataBase: new URL("https://farisfathurrr.vercel.app"),
   title: "Faris Dev | Muhammad Faris Fathur Rohman - Web Developer",
   description: "Portfolio of Muhammad Faris Fathur Rohman — Frontend & Web Developer specializing in Next.js, React, TypeScript, and modern web architectures.",
   authors: [{ name: "Muhammad Faris Fathur Rohman", url: "https://github.com/Riss27" }],
