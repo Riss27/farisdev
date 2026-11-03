@@ -12,7 +12,7 @@ export const metadata = {
   creator: "Muhammad Faris Fathur Rohman",
   keywords: ["Faris Dev", "Muhammad Faris Fathur Rohman", "Frontend Developer", "Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio"],
   verification: {
-    google: "cnhyf4c2NvY6EaPTSItYODJoxyYJWQ5gvZ8ecaG39Os",
+    google: "UfrBkzy1SHsYIehKG4EqvKZ2GmuF64N_APGkbUMjtBU",
   },
   icons: {
     icon: "/favicon.ico",
