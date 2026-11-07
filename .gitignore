@@ -14,8 +14,12 @@ build
 dist
 dist-ssr
 *.local
+
+# Environment files (never commit secrets)
 .env
-.env*.local
+.env.*
+!.env.example
+.vercel
 
 # AI / agent config
 opencode.json
@@ -30,4 +34,3 @@ opencode.json
 *.njsproj
 *.sln
 *.sw?
-.vercel

@@ -31,10 +31,4 @@ export default defineConfig([
       globals: globals.node,
     },
   },
-  {
-    files: ['src/supabaseClient.js'],
-    languageOptions: {
-      globals: { process: 'readonly' },
-    },
-  },
 ])
