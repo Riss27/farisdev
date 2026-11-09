@@ -1,16 +1,27 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
-
-:root {
-  --bg-grid: rgba(0, 0, 0, 0.03);
+@theme {
+  --color-cream: #F5EFEB;
+  --color-cream-surface: #FAF7F2;
+  --color-cream-card: #ECE4DA;
+  --color-forest: #162E20;
+  --color-forest-dark: #0E1F16;
+  --color-forest-light: #21432F;
+  --color-forest-muted: #4B6354;
+  --color-pink: #F43F5E;
+  --color-pink-hover: #E11D48;
 }
 
-html[data-theme="dark"] {
-  --bg-grid: rgba(255, 255, 255, 0.03);
-  --bg-scroll-track: #000;
-  --bg-scroll-thumb: #222;
-  --bg-scroll-thumb-hover: #444;
+:root {
+  --bg-grid: rgba(22, 46, 32, 0.04);
+  --bg-scroll-track: #F5EFEB;
+  --bg-scroll-thumb: #162E20;
+  --bg-scroll-thumb-hover: #F43F5E;
+}
+
+html, body {
+  background-color: #F5EFEB;
+  color: #162E20;
 }
 
 html {

@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isDev = process.env.NODE_ENV !== "production";
+
 const nextConfig = {
   async headers() {
     return [
@@ -14,17 +16,17 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://unpkg.com",
+              `script-src 'self' 'unsafe-inline' ${isDev ? "'unsafe-eval'" : ""} https://unpkg.com`,
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https: blob:",
               "font-src 'self' https://fonts.googleapis.com",
-              "connect-src 'self' https://farisfathurrr.vercel.app",
+              "connect-src 'self' https://farisfathurrr.vercel.app ws: http://localhost:*",
               "media-src 'self'",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
               "frame-ancestors 'none'"
-            ].join('; ')
+            ].filter(Boolean).join('; ')
           },
         ],
       },
