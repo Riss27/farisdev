@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { ArrowUpRight, CheckCircle2, Copy, Check } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, Copy, Check, Calendar } from "lucide-react";
 import FadeIn from "./FadeIn";
 import Magnetic from "./Magnetic";
 
@@ -109,8 +109,8 @@ export default function Contact() {
           </div>
 
           <FadeIn delay={0.4} direction="up">
-            <div className="flex flex-col items-start gap-4">
-              <span className="text-xs uppercase tracking-widest text-forest-muted font-bold">Direct Message</span>
+            <div className="flex flex-col items-start gap-4 mb-6">
+              <span className="text-xs uppercase tracking-widest text-forest-muted font-bold">Direct Inquiry</span>
               <a 
                 href="mailto:rohmanfaris11@gmail.com"
                 className="relative inline-flex items-center gap-4 text-lg sm:text-xl md:text-2xl font-medium tracking-tight pb-2 group break-all"
@@ -120,24 +120,45 @@ export default function Contact() {
                 <ArrowUpRight size={24} className="text-forest group-hover:text-pink group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300 relative z-10 hidden sm:block" aria-hidden="true" />
               </a>
 
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-forest/25 bg-forest/[0.04] hover:bg-forest/[0.12] hover:border-forest/60 hover:-translate-y-0.5 hover:shadow-sm active:translate-y-0 text-xs font-mono text-forest transition-all duration-200 group/copy"
-                aria-label="Copy email address"
-              >
-                {copied ? (
-                  <>
-                    <Check size={13} className="text-pink" aria-hidden="true" />
-                    <span className="text-pink font-semibold">Copied to clipboard</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy size={13} className="transition-colors duration-200 group-hover/copy:text-pink text-forest/70" aria-hidden="true" />
-                    <span className="transition-colors duration-200 text-forest">Copy email address</span>
-                  </>
-                )}
-              </button>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-forest/25 bg-forest/[0.04] hover:bg-forest/[0.12] hover:border-forest/60 hover:-translate-y-0.5 hover:shadow-sm active:translate-y-0 text-xs font-mono text-forest transition-all duration-200 group/copy"
+                  aria-label="Copy email address"
+                >
+                  {copied ? (
+                    <>
+                      <Check size={13} className="text-pink" aria-hidden="true" />
+                      <span className="text-pink font-semibold">Copied to clipboard</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={13} className="transition-colors duration-200 group-hover/copy:text-pink text-forest/70" aria-hidden="true" />
+                      <span className="transition-colors duration-200 text-forest">Copy email address</span>
+                    </>
+                  )}
+                </button>
+
+                <a
+                  href="mailto:rohmanfaris11@gmail.com?subject=Technical%20Interview%20/%20Introductory%20Call&body=Hi%20Faris,%0A%0AI%20would%20like%20to%20schedule%20a%20brief%20call%20regarding..."
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-forest/25 bg-forest/[0.04] hover:bg-forest/[0.12] hover:border-forest/60 hover:-translate-y-0.5 hover:shadow-sm active:translate-y-0 text-xs font-mono text-forest transition-all duration-200"
+                >
+                  <Calendar size={13} className="text-pink" aria-hidden="true" />
+                  <span>Request 15-min Call</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Recruiter & Engineering Lead Availability Note */}
+            <div className="rounded-2xl border border-forest/15 bg-forest/[0.03] p-4 max-w-sm">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-forest font-bold">Engineering Availability</span>
+              </div>
+              <p className="text-xs text-forest/75 font-light leading-relaxed">
+                Open to Fullstack and Frontend Engineering roles. Response within 24 hours guaranteed.
+              </p>
             </div>
           </FadeIn>
           
