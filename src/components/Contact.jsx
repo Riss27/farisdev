@@ -23,7 +23,9 @@ async function copyText(text) {
       await navigator.clipboard.writeText(text);
       return true;
     }
-  } catch {}
+  } catch {
+    // Clipboard API can reject on insecure origins or missing permission.
+  }
 
   try {
     const el = document.createElement("textarea");
