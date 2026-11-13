@@ -52,7 +52,7 @@ export default function FadeIn({
   return (
     <div
       ref={ref}
-      className={`${fullWidth ? "w-full" : ""} ${className}`}
+      className={`fade-in ${fullWidth ? "w-full" : ""} ${className}`}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translate3d(0, 0, 0)" : hiddenTransform,

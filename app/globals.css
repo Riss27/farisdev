@@ -546,6 +546,14 @@
   }
 }
 
+/* Keep revealed content readable when scripts are unavailable. */
+@media (scripting: none) {
+  .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 @media print {
   .scroll-progress,
   header,
