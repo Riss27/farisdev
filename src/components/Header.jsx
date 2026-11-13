@@ -175,7 +175,7 @@ export default function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="p-3 rounded-xl border border-forest/20 text-forest bg-forest/[0.04] hover:bg-forest/[0.12] hover:border-forest/50 hover:text-pink transition-colors duration-200"
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-forest/20 text-forest bg-forest/[0.04] hover:bg-forest/[0.12] hover:border-forest/50 hover:text-pink transition-colors duration-200"
                   >
                     <Icon size={16} aria-hidden="true" />
                   </a>

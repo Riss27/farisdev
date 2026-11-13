@@ -215,7 +215,7 @@ export default function CodeShowcase() {
                   href={current.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-forest hover:text-pink hover:translate-x-1.5 transition-all duration-200 group"
+                  className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-forest hover:text-pink hover:translate-x-1.5 transition-all duration-200 group py-2 -my-2"
                 >
                   <span>View {current.project} Repository</span>
                   <div className="w-10 h-px bg-forest group-hover:bg-pink group-hover:w-14 transition-all duration-300" />

@@ -17,6 +17,30 @@ const fields = [
   { name: "email", label: "Email Address", type: "email", placeholder: "john@example.com", autoComplete: "email" },
 ];
 
+async function copyText(text) {
+  try {
+    if (navigator.clipboard) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch {}
+
+  try {
+    const el = document.createElement("textarea");
+    el.value = text;
+    el.setAttribute("readonly", "");
+    el.style.position = "fixed";
+    el.style.opacity = "0";
+    document.body.appendChild(el);
+    el.select();
+    const ok = document.execCommand("copy");
+    el.remove();
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
@@ -34,14 +58,11 @@ export default function Contact() {
   );
 
   const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(EMAIL);
-      setCopied(true);
-      clearTimeout(copyTimer.current);
-      copyTimer.current = setTimeout(() => setCopied(false), 2500);
-    } catch {
-      setCopied(false);
-    }
+    const ok = await copyText(EMAIL);
+    setCopied(ok);
+    if (!ok) return;
+    clearTimeout(copyTimer.current);
+    copyTimer.current = setTimeout(() => setCopied(false), 2500);
   };
 
   const validate = () => {
