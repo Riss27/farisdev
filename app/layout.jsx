@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,11 +42,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className="scroll-smooth">
-      <body className={`${inter.className} bg-cream text-forest antialiased selection:bg-pink selection:text-white transition-colors duration-500`}>
+    <html lang="en">
+      <body className={`${inter.className} bg-cream text-forest antialiased selection:bg-pink selection:text-white`}>
         <a href="#hero" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-forest focus:text-cream focus:px-4 focus:py-2 focus:text-sm">
           Skip to content
         </a>
+        <ScrollProgress />
         {children}
       </body>
     </html>

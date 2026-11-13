@@ -9,9 +9,9 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen bg-cream text-forest transition-colors duration-500">
+    <div className="app-surface flex min-h-screen text-forest">
       <Header />
-      <main className="flex-1 w-full md:ml-64 lg:ml-80 md:border-l border-forest/15 transition-colors duration-500">
+      <main className="flex-1 w-full md:ml-64 lg:ml-80 md:border-l border-forest/15">
         <Hero />
         <About />
         <Skills />
