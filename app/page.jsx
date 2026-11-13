@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="app-surface flex min-h-screen text-forest">
       <Header />
-      <main className="flex-1 w-full md:ml-64 lg:ml-80 md:border-l border-forest/15">
+      <main className="flex-1 w-full md:ml-64 lg:ml-80">
         <Hero />
         <About />
         <Skills />
