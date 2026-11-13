@@ -84,7 +84,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-forest/15 transition-colors duration-500">
+    <section id="projects" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-b border-forest/15 transition-colors duration-500">
       <div className="flex flex-col gap-8 sm:gap-16">
         <div className="flex justify-between items-end border-b border-forest/15 pb-4 sm:pb-8 relative overflow-hidden">
           <div className="absolute -bottom-4 lg:-bottom-8 left-0 md:left-1/4 opacity-[0.03] select-none pointer-events-none leading-none whitespace-nowrap text-forest">
@@ -103,12 +103,12 @@ export default function Projects() {
             const isExpanded = expandedId === project.id;
             return (
               <FadeIn key={project.id || idx} delay={idx * 0.15} className="h-full">
-                <div className="h-full rounded-[28px] border border-forest/15 bg-cream-surface/90 flex flex-col group overflow-hidden shadow-[0_16px_40px_rgba(22,46,32,0.04)] hover:border-forest/30 transition-colors backdrop-blur-xl">
+                <div className="h-full rounded-3xl border border-forest/15 bg-cream-surface/90 flex flex-col group overflow-hidden shadow-[0_12px_36px_rgba(22,46,32,0.04)] hover:border-forest/30 transition-all duration-300 backdrop-blur-xl">
                   <div className="relative aspect-video overflow-hidden bg-cream-card">
                     <Image src={project.image_url} alt={project.name} fill sizes="(max-width: 1280px) 100vw, 50vw" className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out hover:scale-105" />
                   </div>
 
-                  <div className="p-5 sm:p-8 flex flex-col flex-1">
+                  <div className="p-5 sm:p-7 md:p-8 flex flex-col flex-1">
                     <div className="flex flex-col mb-4">
                       <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                         <span className="text-[11px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.2em] text-forest-muted font-medium">{project.role}</span>
@@ -119,22 +119,24 @@ export default function Projects() {
 
                     <p className="text-forest/75 font-light mb-5 sm:mb-6 text-sm leading-6 sm:leading-7">{project.description}</p>
 
-                    <div className="rounded-xl sm:rounded-2xl bg-forest/[0.04] border border-forest/10 p-3.5 sm:p-4 mb-5 sm:mb-6">
+                    <div className="rounded-2xl bg-forest/[0.04] border border-forest/15 p-4 mb-5 sm:mb-6">
                       <span className="text-[11px] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] text-forest-muted block mb-1 font-semibold">Key Metric</span>
                       <p className="text-xs sm:text-sm font-medium text-forest">“{project.impact}”</p>
                     </div>
 
                     {/* Architecture Deep-Dive Expandable Section */}
                     {project.caseStudy && (
-                      <div className="mb-6 rounded-xl border border-forest/15 bg-forest/[0.02] overflow-hidden transition-all duration-300">
+                      <div className="mb-6 rounded-2xl border border-forest/15 bg-forest/[0.02] overflow-hidden transition-all duration-300">
                         <button
                           type="button"
                           onClick={() => toggleExpand(project.id)}
                           aria-expanded={isExpanded}
-                          className="w-full px-4 py-3 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.18em] text-forest hover:bg-forest/[0.05] transition-colors"
+                          className="w-full px-4 py-3 flex items-center justify-between text-xs font-semibold uppercase tracking-[0.16em] text-forest hover:bg-forest/[0.05] transition-colors"
                         >
-                          <span className="flex items-center gap-2">
-                            <Layers size={14} className="text-pink" aria-hidden="true" />
+                          <span className="flex items-center gap-2.5">
+                            <div className="w-7 h-7 rounded-lg bg-forest/[0.06] border border-forest/15 flex items-center justify-center text-pink shrink-0">
+                              <Layers size={14} aria-hidden="true" />
+                            </div>
                             {isExpanded ? "Hide Architecture Case Study" : "Architecture Case Study"}
                           </span>
                           {isExpanded ? <ChevronUp size={16} aria-hidden="true" /> : <ChevronDown size={16} aria-hidden="true" />}
@@ -167,7 +169,7 @@ export default function Projects() {
 
                     <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 sm:mb-10">
                       {project.tags?.map((tag) => (
-                        <span key={tag} className="px-2.5 py-1 text-[10px] sm:text-xs rounded-full bg-forest/[0.05] border border-forest/10 uppercase tracking-[0.16em] sm:tracking-[0.2em] text-forest-muted font-medium">
+                        <span key={tag} className="px-2.5 py-1 text-[10px] sm:text-[11px] rounded-full bg-forest/[0.05] border border-forest/15 uppercase tracking-[0.16em] sm:tracking-[0.2em] text-forest-muted font-medium font-mono">
                           {tag}
                         </span>
                       ))}

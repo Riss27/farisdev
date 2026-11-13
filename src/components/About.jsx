@@ -32,7 +32,7 @@ const education = [
 
 export default function About() {
   return (
-    <section id="about" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-forest/15 overflow-hidden transition-colors duration-500">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-b border-forest/15 overflow-hidden transition-colors duration-500">
       <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
         <div className="lg:col-span-4 relative">
           <FadeIn direction="right">
@@ -56,7 +56,9 @@ export default function About() {
           <div className="mb-12 sm:mb-16">
             <FadeIn delay={0.25}>
               <div className="flex items-center gap-3 mb-6 pb-3 border-b border-forest/15">
-                <Briefcase size={18} className="text-pink" aria-hidden="true" />
+                <div className="w-8 h-8 rounded-xl bg-forest/[0.05] border border-forest/15 flex items-center justify-center text-pink shrink-0">
+                  <Briefcase size={16} aria-hidden="true" />
+                </div>
                 <h3 className="text-xs uppercase tracking-[0.24em] font-bold text-forest">Work Experience</h3>
               </div>
             </FadeIn>
@@ -64,7 +66,7 @@ export default function About() {
             <div className="space-y-6">
               {experiences.map((exp, idx) => (
                 <FadeIn key={idx} delay={0.3 + idx * 0.1}>
-                  <div className="rounded-[24px] border border-forest/15 bg-cream-surface/90 p-6 sm:p-8 shadow-[0_10px_30px_rgba(22,46,32,0.03)] hover:border-forest/30 transition-all duration-300">
+                  <div className="rounded-3xl border border-forest/15 bg-cream-surface/90 p-6 sm:p-8 shadow-[0_12px_36px_rgba(22,46,32,0.04)] hover:border-forest/30 transition-all duration-300">
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
                       <div>
                         <h4 className="text-xl sm:text-2xl font-semibold text-forest tracking-tight">{exp.role}</h4>
@@ -94,7 +96,9 @@ export default function About() {
           <div className="mb-12 sm:mb-16">
             <FadeIn delay={0.35}>
               <div className="flex items-center gap-3 mb-6 pb-3 border-b border-forest/15">
-                <GraduationCap size={18} className="text-pink" aria-hidden="true" />
+                <div className="w-8 h-8 rounded-xl bg-forest/[0.05] border border-forest/15 flex items-center justify-center text-pink shrink-0">
+                  <GraduationCap size={16} aria-hidden="true" />
+                </div>
                 <h3 className="text-xs uppercase tracking-[0.24em] font-bold text-forest">Education & Background</h3>
               </div>
             </FadeIn>
@@ -102,7 +106,7 @@ export default function About() {
             <div className="space-y-6">
               {education.map((edu, idx) => (
                 <FadeIn key={idx} delay={0.4 + idx * 0.1}>
-                  <div className="rounded-[24px] border border-forest/15 bg-cream-surface/90 p-6 sm:p-8 shadow-[0_10px_30px_rgba(22,46,32,0.03)] hover:border-forest/30 transition-all duration-300">
+                  <div className="rounded-3xl border border-forest/15 bg-cream-surface/90 p-6 sm:p-8 shadow-[0_12px_36px_rgba(22,46,32,0.04)] hover:border-forest/30 transition-all duration-300">
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
                       <div>
                         <h4 className="text-xl sm:text-2xl font-semibold text-forest tracking-tight">{edu.degree}</h4>
@@ -130,10 +134,10 @@ export default function About() {
 
           {/* Engineering Value Proposition */}
           <FadeIn delay={0.45}>
-            <div className="rounded-[24px] border border-forest/15 bg-forest/[0.03] p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-full bg-forest text-cream shrink-0">
-                  <Sparkles size={16} className="text-pink" aria-hidden="true" />
+            <div className="rounded-2xl border border-forest/15 bg-forest/[0.03] p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-forest border border-forest flex items-center justify-center text-pink shrink-0">
+                  <Sparkles size={16} aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="text-sm font-bold uppercase tracking-wider text-forest">Core Engineering Tenet</h4>

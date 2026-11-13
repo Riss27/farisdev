@@ -13,11 +13,11 @@ const skillsData = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-forest/15 overflow-hidden transition-colors duration-500">
-      <div className="grid lg:grid-cols-12 gap-8 lg:gap-8">
+    <section id="skills" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-b border-forest/15 overflow-hidden transition-colors duration-500">
+      <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
         <div className="lg:col-span-4 relative">
           <FadeIn direction="right">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter uppercase lg:sticky lg:top-12 z-10 text-forest mb-2 lg:mb-0">
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.03em] uppercase lg:sticky lg:top-12 z-10 text-forest mb-2 lg:mb-0">
               Stack
             </h2>
           </FadeIn>
@@ -34,17 +34,19 @@ export default function Skills() {
             {skillsData.map((skill, index) => (
               <FadeIn key={skill.id || index} delay={index * 0.1}>
                 <li 
-                  className="py-4 sm:py-6 border-b border-forest/15 grid md:grid-cols-2 gap-2 sm:gap-4 group hover:bg-forest/[0.03] transition-colors duration-200 px-2 sm:px-4 cursor-default"
+                  className="py-4 sm:py-6 border-b border-forest/15 grid md:grid-cols-2 gap-2 sm:gap-4 group hover:bg-forest/[0.03] px-3 sm:px-5 rounded-2xl transition-colors duration-200 cursor-default"
                 >
-                  <div className="flex flex-col">
-                    <span className="text-xs uppercase tracking-widest text-forest-muted mb-1 font-bold">{skill.category}</span>
-                    <div className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tighter uppercase text-forest/60 group-hover:text-forest transition-all duration-300 break-words group-hover:translate-x-2 flex items-center gap-4">
-                      <span className="w-0 h-0 group-hover:w-2 group-hover:h-2 bg-pink block transition-all duration-300"></span>
+                  <div className="flex flex-col justify-center">
+                    <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-forest-muted mb-1.5 font-bold w-fit px-2 py-0.5 rounded-full bg-forest/[0.04] border border-forest/10">
+                      {skill.category}
+                    </span>
+                    <div className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight uppercase text-forest/70 group-hover:text-forest transition-all duration-300 break-words group-hover:translate-x-1 flex items-center gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-pink opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                       {skill.name}
                     </div>
                   </div>
                   {skill.description && (
-                    <div className="text-forest-muted font-light group-hover:text-forest transition-colors duration-200 flex items-center text-xs md:text-sm leading-relaxed">
+                    <div className="text-forest/75 font-light group-hover:text-forest transition-colors duration-200 flex items-center text-xs sm:text-sm leading-relaxed">
                       {skill.description}
                     </div>
                   )}

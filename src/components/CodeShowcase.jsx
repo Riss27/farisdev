@@ -138,13 +138,13 @@ export default function CodeShowcase() {
   const current = codePatterns[activeTab];
 
   return (
-    <section id="code" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-forest/15 overflow-hidden transition-colors duration-500">
+    <section id="code" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-b border-forest/15 overflow-hidden transition-colors duration-500">
       <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
         <div className="lg:col-span-12 mb-4 sm:mb-6 min-w-0">
           <FadeIn>
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-2 bg-forest text-cream">
-                <Code size={20} aria-hidden="true" />
+            <div className="flex items-center gap-3.5 mb-4">
+              <div className="w-9 h-9 rounded-xl bg-forest border border-forest flex items-center justify-center text-cream shrink-0">
+                <Code size={18} aria-hidden="true" />
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tighter uppercase text-forest">Engineering Spotlight</h2>
             </div>
@@ -179,16 +179,16 @@ export default function CodeShowcase() {
         <div className="lg:col-span-7 min-w-0">
           <FadeIn delay={0.2}>
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-forest/20 to-forest-light/30 opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 blur"></div>
-              <div className="relative bg-forest-dark rounded-none border border-forest/30 overflow-hidden shadow-2xl">
-                <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 border-b border-forest/30 bg-forest/50">
+              <div className="absolute -inset-1 bg-gradient-to-r from-forest/20 to-forest-light/30 opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 blur-sm rounded-3xl"></div>
+              <div className="relative bg-forest-dark rounded-3xl border border-forest/30 overflow-hidden shadow-2xl">
+                <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-forest/30 bg-forest/50">
                   <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-pink shadow-[0_0_8px_rgba(244,63,94,0.6)]"></span>
-                    <span className="text-[11px] sm:text-xs uppercase tracking-widest text-cream/80 font-mono font-medium">{current.fileName}</span>
+                    <span className="w-2 h-2 rounded-full bg-pink shadow-[0_0_8px_rgba(244,63,94,0.6)]"></span>
+                    <span className="text-[11px] sm:text-xs uppercase tracking-widest text-cream/90 font-mono font-medium">{current.fileName}</span>
                   </div>
                   <Terminal size={14} className="text-cream/60" aria-hidden="true" />
                 </div>
-                <div className="p-3 sm:p-6 overflow-x-auto max-h-[350px] sm:max-h-[500px]">
+                <div className="p-4 sm:p-6 overflow-x-auto max-h-[350px] sm:max-h-[500px]">
                   <pre className="text-[10px] sm:text-xs font-mono text-cream/90 leading-normal whitespace-pre">
                     <code>{current.snippet}</code>
                   </pre>
@@ -205,8 +205,8 @@ export default function CodeShowcase() {
                 const IconComponent = feat.icon;
                 return (
                   <div key={fIdx} className="flex gap-4 items-start group">
-                    <div className="mt-1 p-2 border border-forest/15 rounded-lg bg-forest/[0.03] group-hover:bg-forest group-hover:text-cream transition-colors duration-300">
-                      <IconComponent size={20} className="text-pink group-hover:text-pink transition-colors" aria-hidden="true" />
+                    <div className="w-10 h-10 rounded-xl border border-forest/15 bg-forest/[0.05] group-hover:bg-forest group-hover:border-forest flex items-center justify-center text-pink transition-colors duration-300 shrink-0 mt-0.5">
+                      <IconComponent size={18} aria-hidden="true" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold uppercase tracking-tight mb-1 text-forest">{feat.title}</h3>

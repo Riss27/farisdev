@@ -72,14 +72,14 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-8 md:px-12 lg:px-20 border-b border-forest/15 overflow-hidden relative transition-colors duration-500">
+    <section id="contact" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 border-b border-forest/15 overflow-hidden relative transition-colors duration-500">
       <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 max-w-[1600px] mx-auto">
         
         {/* Left Column: Heading & Info */}
         <div className="lg:col-span-5 relative flex flex-col justify-between h-full">
           <div>
             <FadeIn direction="right">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter uppercase mb-6 sm:mb-12 text-forest">
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-[-0.03em] uppercase mb-6 sm:mb-12 text-forest">
                 Get in Touch
               </h2>
             </FadeIn>
@@ -170,15 +170,15 @@ export default function Contact() {
 
         {/* Right Column: Contact Form */}
         <FadeIn delay={0.4} direction="left" className="lg:col-span-7 flex flex-col justify-center">
-          <div className="bg-cream-surface/90 border border-forest/15 p-6 sm:p-10 md:p-12 relative overflow-hidden group/form rounded-[28px] shadow-[0_20px_50px_rgba(22,46,32,0.04)]">
+          <div className="bg-cream-surface/90 border border-forest/15 p-6 sm:p-8 md:p-10 relative overflow-hidden group/form rounded-3xl shadow-[0_12px_36px_rgba(22,46,32,0.04)]">
             <div className="absolute top-0 right-0 w-96 h-96 bg-forest/[0.04] rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none transition-opacity duration-700 opacity-50 group-focus-within/form:opacity-100"></div>
             
-            <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-8">
+            <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-6">
               
-              <div className="grid sm:grid-cols-2 gap-8">
+              <div className="grid sm:grid-cols-2 gap-6">
                 {/* Name Input */}
                 <div className="flex flex-col gap-2 relative">
-                  <label htmlFor="name" className="text-xs uppercase tracking-widest text-forest-muted font-bold mb-1">
+                  <label htmlFor="name" className="text-xs uppercase tracking-widest text-forest-muted font-bold">
                     Your Name
                   </label>
                   <input
@@ -189,7 +189,7 @@ export default function Contact() {
                     onChange={handleChange}
                     aria-invalid={!!errors.name}
                     aria-describedby={errors.name ? "name-error" : undefined}
-                    className={`w-full bg-transparent border-b ${errors.name ? 'border-pink' : 'border-forest/20'} py-3 px-0 text-forest placeholder:text-forest-muted/50 focus:outline-none focus:border-pink focus:ring-0 transition-colors duration-300`}
+                    className={`w-full bg-cream/60 border ${errors.name ? 'border-pink' : 'border-forest/20'} rounded-xl px-4 py-3 text-forest text-sm placeholder:text-forest-muted/50 focus:outline-none focus:border-forest/60 focus:bg-cream-surface focus:ring-1 focus:ring-forest/20 transition-all duration-200`}
                     placeholder="John Doe"
                     disabled={status === "loading"}
                   />
@@ -198,7 +198,7 @@ export default function Contact() {
 
                 {/* Email Input */}
                 <div className="flex flex-col gap-2 relative">
-                  <label htmlFor="email" className="text-xs uppercase tracking-widest text-forest-muted font-bold mb-1">
+                  <label htmlFor="email" className="text-xs uppercase tracking-widest text-forest-muted font-bold">
                     Email Address
                   </label>
                   <input
@@ -209,7 +209,7 @@ export default function Contact() {
                     onChange={handleChange}
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? "email-error" : undefined}
-                    className={`w-full bg-transparent border-b ${errors.email ? 'border-pink' : 'border-forest/20'} py-3 px-0 text-forest placeholder:text-forest-muted/50 focus:outline-none focus:border-pink focus:ring-0 transition-colors duration-300`}
+                    className={`w-full bg-cream/60 border ${errors.email ? 'border-pink' : 'border-forest/20'} rounded-xl px-4 py-3 text-forest text-sm placeholder:text-forest-muted/50 focus:outline-none focus:border-forest/60 focus:bg-cream-surface focus:ring-1 focus:ring-forest/20 transition-all duration-200`}
                     placeholder="john@example.com"
                     disabled={status === "loading"}
                   />
@@ -218,8 +218,8 @@ export default function Contact() {
               </div>
 
               {/* Message Input */}
-              <div className="flex flex-col gap-2 relative mt-4">
-                <label htmlFor="message" className="text-xs uppercase tracking-widest text-forest-muted font-bold mb-1">
+              <div className="flex flex-col gap-2 relative mt-2">
+                <label htmlFor="message" className="text-xs uppercase tracking-widest text-forest-muted font-bold">
                   Message
                 </label>
                 <textarea
@@ -230,7 +230,7 @@ export default function Contact() {
                   rows={4}
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? "message-error" : undefined}
-                  className={`w-full bg-transparent border-b ${errors.message ? 'border-pink' : 'border-forest/20'} py-3 px-0 text-forest placeholder:text-forest-muted/50 focus:outline-none focus:border-pink focus:ring-0 transition-colors duration-300 resize-none`}
+                  className={`w-full bg-cream/60 border ${errors.message ? 'border-pink' : 'border-forest/20'} rounded-xl px-4 py-3 text-forest text-sm placeholder:text-forest-muted/50 focus:outline-none focus:border-forest/60 focus:bg-cream-surface focus:ring-1 focus:ring-forest/20 transition-all duration-200 resize-none`}
                   placeholder="Tell me about your project..."
                   disabled={status === "loading"}
                 />
@@ -238,7 +238,7 @@ export default function Contact() {
               </div>
 
               {/* Submit Button & Status Indicator */}
-              <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 justify-between border-t border-forest/15 pt-8">
+              <div className="mt-4 flex flex-col sm:flex-row items-center gap-6 justify-between border-t border-forest/15 pt-6">
                 
                 <div role="status" aria-live="polite">
                   {status === "success" ? (
@@ -256,15 +256,15 @@ export default function Contact() {
                 <Magnetic strength={0.2}>
                   <button
                     type="submit"
-                    className="relative overflow-hidden bg-forest text-cream hover:bg-forest-light hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(22,46,32,0.25)] active:translate-y-0 active:scale-[0.98] font-bold uppercase tracking-widest text-xs px-8 py-4 flex items-center justify-center gap-3 group transition-all duration-200 w-full sm:w-auto min-w-[180px] rounded-full shadow-[0_8px_20px_rgba(22,46,32,0.14)]"
+                    className="relative overflow-hidden bg-forest text-cream hover:bg-forest-light hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(22,46,32,0.25)] active:translate-y-0 active:scale-[0.98] font-semibold uppercase tracking-[0.2em] text-[11px] px-7 py-3.5 flex items-center justify-center gap-2.5 group transition-all duration-200 w-full sm:w-auto min-w-[170px] rounded-full shadow-[0_6px_18px_rgba(22,46,32,0.14)]"
                   >
-                    <span className="relative z-10 flex items-center gap-3 text-cream">
+                    <span className="relative z-10 flex items-center gap-2.5 text-cream">
                       {status === "success" ? (
                         <>Opened Mailer</>
                       ) : (
                         <>
                           Send Message
-                          <ArrowUpRight size={16} className="transition-all duration-200 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-pink text-cream/70" aria-hidden="true" />
+                          <ArrowUpRight size={14} className="transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-pink text-cream/70" aria-hidden="true" />
                         </>
                       )}
                     </span>

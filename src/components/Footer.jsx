@@ -8,13 +8,15 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="px-4 sm:px-8 md:px-12 lg:px-20 py-12 sm:py-20 lg:py-24 border-t border-forest/15 overflow-hidden transition-colors duration-500">
+    <footer className="px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12 sm:py-20 lg:py-24 border-t border-forest/15 overflow-hidden transition-colors duration-500">
       <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-32 mb-10 sm:mb-16 lg:mb-24">
         {/* Base of Operations */}
         <div>
           <div className="uppercase tracking-widest text-[10px] sm:text-xs text-forest-muted mb-6 sm:mb-8 font-bold">Base of Operations</div>
           <div className="flex items-start gap-4 text-forest group cursor-default">
-            <MapPin size={24} className="transition-transform duration-300 group-hover:-translate-y-1 text-forest-muted shrink-0 mt-0.5" strokeWidth={1.5} aria-hidden="true" />
+            <div className="w-10 h-10 rounded-xl border border-forest/15 bg-forest/[0.05] flex items-center justify-center text-forest-muted shrink-0 mt-0.5">
+              <MapPin size={20} strokeWidth={1.5} aria-hidden="true" />
+            </div>
             <div className="flex flex-col">
               <span className="text-xl sm:text-2xl uppercase tracking-widest font-bold mb-2">Indonesia, ID</span>
               <span className="text-sm font-mono text-forest-muted">GMT+7 / WIB</span>
@@ -32,7 +34,7 @@ export default function Footer() {
                 href={social.href} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group border-b border-forest/15 hover:border-forest/30 hover:bg-forest/[0.03] px-2 sm:px-3 py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center justify-between text-base sm:text-lg font-medium text-forest/75 hover:text-forest transition-all duration-200 gap-2 sm:gap-0 first:border-t rounded-xl"
+                className="group border-b border-forest/15 hover:border-forest/30 hover:bg-forest/[0.03] px-3 sm:px-4 py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center justify-between text-base sm:text-lg font-medium text-forest/75 hover:text-forest transition-all duration-200 gap-2 sm:gap-0 first:border-t rounded-2xl"
               >
                 <span className="flex items-center gap-4">
                   <span className="group-hover:translate-x-2 transition-transform duration-200 font-semibold">{social.label}</span>
